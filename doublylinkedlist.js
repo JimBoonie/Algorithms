@@ -38,12 +38,12 @@ class DoublyLinkedList {
         }
 
         if (n > 0) {
-            while (n > 0) {
+            while (n > 0 && this.node.next != null) {
                 this.node = this.node.next;
                 n -= 1;
             }
         } else {
-            while (n < 0) {
+            while (n < 0 && this.node.prev != null) {
                 this.node = this.node.prev;
                 n += 1;
             }
@@ -70,4 +70,6 @@ console.log(linked_list.node.val);
 linked_list.walkToHead();
 console.log(linked_list.node.val);
 linked_list.step(2);
+console.log(linked_list.node.val);
+linked_list.step(-4);
 console.log(linked_list.node.val);
