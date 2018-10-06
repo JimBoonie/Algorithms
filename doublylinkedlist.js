@@ -9,6 +9,7 @@ class DoublyLinkedList {
         }
     
         this.head = first;
+        this.tail = node;
         this.node = first;
     }
 
@@ -50,6 +51,18 @@ class DoublyLinkedList {
         }
     }
 
+    addHead(val) {
+        var node = this.doublyLinkedListNode(val, null, this.head);
+        this.head.prev = node;
+        this.head = node;
+    }
+
+    addTail(val) {
+        var node = this.doublyLinkedListNode(val, this.tail, null);
+        this.tail.next = node;
+        this.tail = node;
+    }
+
     walkToTail() {
         while (this.node.next != null) {
             this.node = this.node.next;
@@ -73,3 +86,8 @@ linked_list.step(2);
 console.log(linked_list.node.val);
 linked_list.step(-4);
 console.log(linked_list.node.val);
+linked_list.addHead(-1);
+console.log(linked_list.head.val);
+linked_list.addTail(5);
+console.log(linked_list.tail.val);
+console.log(linked_list.traverse());
