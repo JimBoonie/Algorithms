@@ -50,13 +50,13 @@ class DoublyLinkedList {
         }
     }
 
-    walkForward() {
+    walkToTail() {
         while (this.node.next != null) {
             this.node = this.node.next;
         } 
     }
 
-    walkBackward() {
+    walkToHead() {
         while (this.node.prev != null) {
             this.node = this.node.prev;
         } 
