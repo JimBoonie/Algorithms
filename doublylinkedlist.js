@@ -8,6 +8,7 @@ class DoublyLinkedList {
             prev = node;
         }
     
+        this.head = first;
         this.node = first;
     }
 
