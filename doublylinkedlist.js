@@ -20,23 +20,34 @@ class DoublyLinkedList {
         }
     }
 
+    traverse() {
+        var data = [];
+        var node = this.head;
+        data.push(node.val);
+        while(node.next != null) {
+            node = node.next;
+            data.push(node.val);
+        }
+
+        return data;
+    }
+
     walkForward() {
-        console.log(this.node.val);
         while (this.node.next != null) {
             this.node = this.node.next;
-            console.log(this.node.val);
         } 
     }
 
-    walkBackward() { 
-        console.log(this.node.val);
+    walkBackward() {
         while (this.node.prev != null) {
             this.node = this.node.prev;
-            console.log(this.node.val);
         } 
     }
 }
 
 var linked_list = new DoublyLinkedList([0, 1, 2, 3, 4]);
+console.log(linked_list.traverse());
 linked_list.walkForward();
+console.log(linked_list.node.val);
 linked_list.walkBackward();
+console.log(linked_list.node.val);
