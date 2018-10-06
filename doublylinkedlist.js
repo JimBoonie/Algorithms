@@ -32,7 +32,7 @@ class DoublyLinkedList {
         return data;
     }
 
-    step(n) {
+    step(n=1) {
         if (!Number.isInteger(n)) {
             throw TypeError('n must be an integer.');
         }
@@ -65,9 +65,9 @@ class DoublyLinkedList {
 
 var linked_list = new DoublyLinkedList([0, 1, 2, 3, 4]);
 console.log(linked_list.traverse());
-linked_list.walkForward();
+linked_list.walkToTail();
 console.log(linked_list.node.val);
-linked_list.walkBackward();
+linked_list.walkToHead();
 console.log(linked_list.node.val);
 linked_list.step(2);
 console.log(linked_list.node.val);
