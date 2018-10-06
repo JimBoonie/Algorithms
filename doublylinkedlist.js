@@ -32,6 +32,24 @@ class DoublyLinkedList {
         return data;
     }
 
+    step(n) {
+        if (!Number.isInteger(n)) {
+            throw TypeError('n must be an integer.');
+        }
+
+        if (n > 0) {
+            while (n > 0) {
+                this.node = this.node.next;
+                n -= 1;
+            }
+        } else {
+            while (n < 0) {
+                this.node = this.node.prev;
+                n += 1;
+            }
+        }
+    }
+
     walkForward() {
         while (this.node.next != null) {
             this.node = this.node.next;
@@ -50,4 +68,6 @@ console.log(linked_list.traverse());
 linked_list.walkForward();
 console.log(linked_list.node.val);
 linked_list.walkBackward();
+console.log(linked_list.node.val);
+linked_list.step(2);
 console.log(linked_list.node.val);
