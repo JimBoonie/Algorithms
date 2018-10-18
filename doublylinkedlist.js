@@ -41,6 +41,32 @@ class DoublyLinkedList {
         return x;
     }
 
+    insert(val) {
+        var newnode = this.doublyLinkedListNode(val, this.node.prev, this.node);
+        if (this.node.prev != null) {
+            this.node.prev.next = newnode;
+        } else {
+            this.head = newnode;
+        }
+        this.node.prev = newnode;
+        this.node = newnode;
+        return this.node;
+    }
+
+    delete() {
+        if (this.node.prev != null) {
+            this.node.prev.next = this.node.next;
+        } else {
+            this.head = this.node.next;
+        }
+
+        if (this.node.next != null) {
+            this.node.next.prev = this.node.prev;
+        } else {
+            this.tail = this.node.prev;
+        }
+    }
+
     step(n=1) {
         if (!Number.isInteger(n)) {
             throw TypeError('n must be an integer.');
@@ -100,5 +126,19 @@ linked_list.addTail(5);
 console.log(linked_list.tail.val);
 console.log(linked_list.traverse());
 
+linked_list = new DoublyLinkedList([0, 1, 2, 3, 4]);
+// test search
 console.log(linked_list.search(2));
 console.log(linked_list.search('foo'));
+
+// test insert and delete
+linked_list.walkToHead();
+linked_list.insert(-1);
+linked_list.step(4);
+linked_list.insert(3);
+console.log(linked_list.traverse());
+linked_list.walkToHead();
+linked_list.delete();
+linked_list.step(4);
+linked_list.delete();
+console.log(linked_list.traverse());
