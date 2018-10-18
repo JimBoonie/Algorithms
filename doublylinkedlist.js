@@ -33,6 +33,14 @@ class DoublyLinkedList {
         return data;
     }
 
+    search(val) {
+        var x = this.head;
+        while (x != null && x.val != val) {
+            x = x.next;
+        }
+        return x;
+    }
+
     step(n=1) {
         if (!Number.isInteger(n)) {
             throw TypeError('n must be an integer.');
@@ -91,3 +99,6 @@ console.log(linked_list.head.val);
 linked_list.addTail(5);
 console.log(linked_list.tail.val);
 console.log(linked_list.traverse());
+
+console.log(linked_list.search(2));
+console.log(linked_list.search('foo'));
