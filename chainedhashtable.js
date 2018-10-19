@@ -36,7 +36,8 @@ class ChainedHashTable {
     }
 
     delete(key) {
-
+        var index = this.calcHash(key);
+        this.table[index].delete(key);
     }
 }
 
@@ -83,19 +84,19 @@ class LinkedList {
         return newnode;
     }
 
-    delete(node) {
+    delete(key) {
         var walk = this.head;
         if (walk == null) {
             return;
         }
 
-        if (walk === node) {
+        if (walk.key == key) {
             this.head = walk.next;
             return;
         }
 
         while (walk.next != null) {
-            if (walk.next === node) {
+            if (walk.next.key == key) {
                 walk.next = walk.next.next;
                 return;
             }
@@ -109,8 +110,8 @@ var node0 = linked_list.insert('a', 0);
 var node1 = linked_list.insert('b', 1);
 var node2 = linked_list.insert('c', 2);
 var node3 = linked_list.insert('d', 3);
-linked_list.delete(node1);
-linked_list.delete(node3);
+linked_list.delete('b');
+linked_list.delete('d');
 console.log(linked_list);
 
 var table_size = 8;
@@ -128,4 +129,5 @@ for (let i = 0; i < mylist.length; i++) {
 
 var mytable = new ChainedHashTable(table_size, mylist)
 console.log(mytable.get('cottage'));
-console.log(mytable.get('mexican'));
+mytable.delete('cottage');
+console.log(mytable.get('cottage'));
